@@ -1,4 +1,5 @@
 <!doctype html>
+<!doctype html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
@@ -34,7 +35,6 @@
     body.selected #clockWrapper{
       display: block;
     }
-
     body #tzList{
       display: block;
     }
@@ -44,7 +44,6 @@
     #clockWrapper h1{
       margin-top: 100px;
     }
-
   }
   /* wide screen */
   @media (min-width:600px){
@@ -115,8 +114,19 @@
     display:block;
     position: relative;
     width: 100%;
-    height: 115px;
+    height: 125px;
     overflow: hidden;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    background-color: lightgray;
+    box-shadow: 0 9px #999;
+  }
+  button:active {
+    background-color: #000fff;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
   button.box .overlay{
     display:block;
@@ -164,7 +174,7 @@
     height: 200px;
   }
   button.box.active{
-    background: gold;
+    background: #000fff;
   }
   </style>
   <script>
@@ -174,7 +184,6 @@
     $("#tsSelectOverlay").fadeOut();
     $("#addButton").fadeIn();
   }
-
   function addNewClicked()
   {
     $("#tsSelectOverlay").fadeIn();
@@ -189,7 +198,6 @@
     $('#timezoneSelect').select2();
     buildTZList();
   }
-
   function buildTZList(){
     var listTZ = $("#timezoneSelect").select2("data");
     var markup = "";
@@ -208,10 +216,8 @@
   function tzSelected(index)
   {
     $("body").addClass("selected");
-
     $("#tzList button.box").removeClass("active");
     $("#tzList button.box:nth-of-type(" + (index + 1) + ")").addClass("active");
-
     var listTZ = $("#timezoneSelect").select2("data");
     var markup = "<h1>" + listTZ[index].text + "</h1><iframe src='clock.html#" + listTZ[index].id + "'></iframe>";
     document.getElementById("clockWrapper").innerHTML = markup;
